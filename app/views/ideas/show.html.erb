@@ -1,0 +1,48 @@
+<script>
+window.onload = function() {
+  $(".alert").fadeOut(3000 );
+  console.log("it works!");
+};
+</script>
+
+<h1>Ideas</h1>
+
+
+<div class="table">
+	<tr> 
+		<td>
+		<%=  @idea.title %>
+		<br>
+		<%=  @idea.des %>
+		</td>
+	</tr>
+</div>
+
+
+
+ 
+<%= form_for [@idea, @review] do |f| %>
+	<div>
+	<%= f.label :body %>
+	<%= f.text_area :body %>
+	</div>
+	<%= f.submit  class: "btn btn-default" %>
+<% end %>
+
+
+
+<% @reviews.each do |f| %>
+<div class="table">
+	<tr> 
+		<td>
+		<%= f.body %>
+		</td>
+	</tr>
+	<tr> 
+		<td>
+		<%= link_to 'Delete', idea_review_path(f), method: :delete %>
+		</td>
+
+	</tr>
+</div>
+<% end %>

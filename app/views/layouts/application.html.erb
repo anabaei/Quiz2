@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Amir Nabaei</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+	   <nav class="navbar navbar-inverse">
+		  <ul class="nav navbar-nav">
+		  <% if (current_user) %>
+			  <li><%= link_to 'Sign Out', reset_path, method: :delete %></li>
+			  </ul>
+			  <p class="navbar-text pull">Hello <%= current_user.first_name%> </p>
+		  <% else %>
+			    <li><%= link_to 'Sign In', users_path %></li>
+			    <li><%= link_to 'Sign Up', new_user_path %></li>
+		   </ul>    
+		  <% end %>
+		
+		</nav>
+	<% if flash[:notice] %>
+	    <div class="alert alert-success" role="alert">
+	         <%= flash[:notice] %> </div>
+	<% elsif  flash[:alert] %> 
+	        <div><%= flash[:alert] %></div>
+	<% end %>
+  <body>
+    <div class= "container-fluid" style="margin-left: 3%;">
+    <%= yield %>
+    </div>
+  </body>
+</html>
