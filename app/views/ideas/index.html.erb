@@ -83,16 +83,18 @@ window.onload = function() {
 		</td>
 		<td>
 		 <button class="btn btn-default">
-		 <%= link_to 'show', idea_path(f) %>
+		 <%= link_to 'Write a Review!', idea_path(f) %>
 		 	
 		 </button>
 		</td>
-		<td>
-		<button class="btn btn-default"><%= link_to 'Edit', edit_idea_path(f)  %></button>
-		</td>
-		<td>
-		<button class="btn btn-default"><%= link_to 'Delete', idea_path(f), method: :delete %></button>
-		</td>
+		<% if current_user.present? %>
+			<td>
+			<button class="btn btn-default"><%= link_to 'Edit', edit_idea_path(f)  %></button>
+			</td>
+			<td>
+			<button class="btn btn-default"><%= link_to 'Delete', idea_path(f), method: :delete %></button>
+			</td>
+		<% end %>
 		<td>
 		<div> Likes </div>
 		</td>
