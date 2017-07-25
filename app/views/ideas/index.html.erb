@@ -22,7 +22,7 @@ window.onload = function() {
 
 
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxHZQfyRUhy7PUCZ3ZkR-svPPFTLkUDvH1elrOKE666lScRY0K" class="img-circle" alt="Cinque Terre" width="70" height="70"> 
-<h3>Idea Factory</h3>
+<h1>Idea Factory</h1>
 <% if current_user.present? %>
 <% else %>
  <div class="alert alert-warning" id="warns">
@@ -73,7 +73,7 @@ window.onload = function() {
 	<tr> 
 	<hr>
 		<td>
-		<div class="title" style="color: grey;"><%=f.title %> </div>
+		<h4 class="title" style="color:#521C9C"><%=f.title %> </h4>
 		<div class="des"><%= f.des %></div>
 		</td>
         
@@ -82,7 +82,7 @@ window.onload = function() {
 		</td>
 		<br>
 		<td>
-		 <button class="btn btn-success likes">
+		 <button class="btn btn-success likes" >
 		 <%= link_to 'likes', likes_path(f) %>
 		 </button>
 		</td>
