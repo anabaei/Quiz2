@@ -1,9 +1,12 @@
 
 <script>
 window.onload = function() {
+  $("#warns").fadeOut(20000 );
   $(".alert").fadeOut(8000 );
   $( ".des").animate({opacity: 'toggle'}, 'fast');
 };
+
+
 
    $(document).on('click', '.title', function () {
    $( ".des").animate({opacity: 'toggle'}, 'slow'); 
@@ -20,7 +23,12 @@ window.onload = function() {
 
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxHZQfyRUhy7PUCZ3ZkR-svPPFTLkUDvH1elrOKE666lScRY0K" class="img-circle" alt="Cinque Terre" width="70" height="70"> 
 <h3>Idea Factory</h3>
-
+<% if current_user.present? %>
+<% else %>
+ <div class="alert alert-warning" id="warns">
+   To <strong> allow </strong> write or  edit  <strong> review  </strong> you should sign in.
+</div>
+<% end %>
 <div class="container">
 
   <!-- Trigger the modal with a button -->
@@ -81,13 +89,14 @@ window.onload = function() {
 		<td>
 		<div class="btn btn-default"> Join </div>
 		</td>
-		<td>
-		 <button class="btn btn-default">
-		 <%= link_to 'Write a Review!', idea_path(f) %>
-		 	
-		 </button>
-		</td>
+		
 		<% if current_user.present? %>
+		    <td>
+			 <button class="btn btn-default">
+			 <%= link_to 'Write a Review!', idea_path(f) %>
+			 	
+			 </button>
+			</td>
 			<td>
 			<button class="btn btn-default"><%= link_to 'Edit', edit_idea_path(f)  %></button>
 			</td>
